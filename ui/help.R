@@ -12,7 +12,6 @@ tabPanel("Help",
            ),
            #tags$iframe(style="height:600px; width:400px", src="http://www.besmarter-team.org/files/working_papers/A%20GUIded%20tour%20around%20Bayesian%20regression.pdf")
            #tags$iframe(style="height:600px; width:100%", src="docs/help.pdf")
-
            tags$iframe(style="height:600px; width:100%", src="http://www.besmarter-team.org/files/working_papers/A%20GUIded%20tour%20of%20Bayesian%20regression.pdf")
            )
          ))
