@@ -40,14 +40,11 @@ for (n in 1:nobs) {
 Data <- as.data.frame(cbind(Y,theta,X1,X2,species))
 plot(Data$X1,Data$theta)
 #== Call to MCMChlogit
-model2 <- MCMChlogit(fixed=Y~X1+X2, random=~X1, group="species",
+model <- MCMChlogit(fixed=Y~X1+X2, random=~X1+X2, group="species",
                     data=Data, burnin=5000, mcmc=1000, thin=1,verbose=1,
                     seed=NA, beta.start=0, sigma2.start=1,
                     Vb.start=1, mubeta=0, Vbeta=1.0E6,
-                    r=3, R=diag(c(1,0.1)), nu=0.001, delta=0.001, FixOD=1)
-
-
-
+                    r=3, R=diag(c(1,0.1,0.1)), nu=0.001, delta=0.001, FixOD=1)
 #== MCMC analysis
 # Graphics
 pdf("Posteriors-MCMChlogit.pdf")
