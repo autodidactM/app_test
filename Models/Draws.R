@@ -9,5 +9,11 @@ Draws<-function(Post,burnin,keep){
     }
   }
   draws<- draws[-c(1:ceiling(burnin/keep)),]
+  if(!is.na(ncol(Post))&ncol(Post)>1){
+    colnames(draws)=colnames(Post)
+  }else{
+    draws=matrix( draws,ncol = 1)
+    colnames(draws)=colnames(Post)
+  }
   return(draws)
 }

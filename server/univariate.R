@@ -737,7 +737,11 @@ sim=function(DF){
         do.call(MCMClogit, args)}
       else {
         if (input$M11 == 'm113') {
-          do.call(rbprobitGibbs, args)}
+          out=do.call(rbprobitGibbs, args)
+          out$betadraw=as.matrix(out$betadraw)
+          colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+          out
+          }
         else {
           if (input$M11 == 'm114') {
             do.call(rmnpGibbs, args)}
@@ -746,10 +750,19 @@ sim=function(DF){
               do.call(rmnlIndepMetrop, args)}
             else {
               if (input$M11 == 'm116') {
-                do.call(rordprobitGibbs, args)}
+                out=do.call(rordprobitGibbs, args)
+                out$betadraw=as.matrix(out$betadraw)
+                colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+                out
+
+                }
               else {
                 if (input$M11 == 'm117') {
-                  do.call(rnegbinRw, args)}
+                  out=do.call(rnegbinRw, args)
+                  out$betadraw=as.matrix(out$betadraw)
+                  colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+                  out
+                  }
                 else {
                   if (input$M11 == 'm118'){
                     do.call(MCMCtobit, args)}
