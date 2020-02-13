@@ -809,9 +809,9 @@ ListSUR<-function(dat,m,ki){
 
       out$betadraw=as.matrix(out$betadraw)
       base_cn=colnames(hot_to_r(input$hotPVarMV))
-      cn=paste(base_cn,1)
+      cn=paste(base_cn,1,sep = '_')
       for (i in 2:argsM$m){
-        cn=c(cn,paste(base_cn,i))
+        cn=c(cn,paste(base_cn,i,sep = '_'))
       }
 
       beta_nums=cn
@@ -819,6 +819,18 @@ ListSUR<-function(dat,m,ki){
       var_names=colnames(dataInput2())[-c(1:argsM$m)][1:argsM$k]
       var_names=rep(var_names,argsM$m)
       colnames(out$betadraw)=paste(beta_nums,var_names,sep = '_')
+      out$Sigmadraw=as.matrix(out$Sigmadraw)
+      sigmas=c()
+      n_y=sqrt(ncol(out$Sigmadraw))
+      for (i in 1:n_y){
+        for (j in 1:n_y){
+          sigmas=c(sigmas,paste0('sigma',i,'_',j))
+        }
+      }
+      colnames(out$Sigmadraw)=sigmas
+      out$Sigmadraw=as.mcmc(out$Sigmadraw)
+      out$betadraw=as.mcmc(out$betadraw)
+
       out
 
 
@@ -835,6 +847,19 @@ ListSUR<-function(dat,m,ki){
         beta_nums=colnames(hot_to_r(input$hotPMeanMVSUR))
         var_names=var_names[1:length(beta_nums)]
         colnames(out$betadraw)=paste(beta_nums,var_names,sep = '_')
+        ##sigma
+        out$Sigmadraw=as.matrix(out$Sigmadraw)
+        sigmas=c()
+        n_y=sqrt(ncol(out$Sigmadraw))
+        for (i in 1:n_y){
+          for (j in 1:n_y){
+            sigmas=c(sigmas,paste0('sigma',i,'_',j))
+          }
+        }
+        colnames(out$Sigmadraw)=sigmas
+        out$Sigmadraw=as.mcmc(out$Sigmadraw)
+        out$betadraw=as.mcmc(out$betadraw)
+
         out
 
 
@@ -854,7 +879,20 @@ ListSUR<-function(dat,m,ki){
             out$gammadraw=as.matrix(out$gammadraw)
             beta_gamma=rownames(hot_to_r(input$hotPmeanY))
             colnames(out$gammadraw)=paste0(beta_gamma[beta_gamma!=var_prom],'_gamma')
-
+            ### sigma
+            out$Sigmadraw=as.matrix(out$Sigmadraw)
+            sigmas=c()
+            n_y=sqrt(ncol(out$Sigmadraw))
+            for (i in 1:n_y){
+              for (j in 1:n_y){
+                sigmas=c(sigmas,paste0('sigma',i,'_',j))
+              }
+            }
+            colnames(out$Sigmadraw)=sigmas
+            out$Sigmadraw=as.mcmc(out$Sigmadraw)
+            out$betadraw=as.mcmc(out$betadraw)
+            out$gammadraw=as.mcmc(out$gammadraw)
+            out$deltadraw=as.mcmc(out$deltadraw)
 
 
             out
@@ -868,6 +906,18 @@ ListSUR<-function(dat,m,ki){
               beta_nums=colnames(hot_to_r(input$hotPvarBVProbit))
               var_names=rep(var_names,length(beta_nums)/length(var_names))
               colnames(out$betadraw)=paste(beta_nums,var_names,sep = '_')
+              ####sigma
+              out$Sigmadraw=as.matrix(out$Sigmadraw)
+              sigmas=c()
+              n_y=sqrt(ncol(out$Sigmadraw))
+              for (i in 1:n_y){
+                for (j in 1:n_y){
+                  sigmas=c(sigmas,paste0('sigma',i,'_',j))
+                }
+              }
+              colnames(out$Sigmadraw)=sigmas
+              out$Sigmadraw=as.mcmc(out$Sigmadraw)
+              out$betadraw=as.mcmc(out$betadraw)
               out
             }
           }

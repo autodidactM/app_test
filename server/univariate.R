@@ -740,6 +740,8 @@ sim=function(DF){
           out=do.call(rbprobitGibbs, args)
           out$betadraw=as.matrix(out$betadraw)
           colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+          out$betadraw=as.mcmc(out$betadraw)
+
           out
           }
         else {
@@ -753,6 +755,14 @@ sim=function(DF){
                 out=do.call(rordprobitGibbs, args)
                 out$betadraw=as.matrix(out$betadraw)
                 colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+                out$betadraw=as.mcmc(out$betadraw)
+
+                out$cutdraw=as.matrix(out$cutdraw)
+
+                cuts=paste0('cut_',1:ncol(out$cutdraw))
+
+                out$cutdraw=as.mcmc(out$cutdraw)
+
                 out
 
                 }
@@ -761,6 +771,7 @@ sim=function(DF){
                   out=do.call(rnegbinRw, args)
                   out$betadraw=as.matrix(out$betadraw)
                   colnames(out$betadraw)=paste0('beta_',rownames(hot_to_r(input$hotPmean)))
+                  out$betadraw=as.mcmc(out$betadraw)
                   out
                   }
                 else {
