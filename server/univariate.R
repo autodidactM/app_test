@@ -746,7 +746,10 @@ sim=function(DF){
           }
         else {
           if (input$M11 == 'm114') {
-            do.call(rmnpGibbs, args)}
+            out=do.call(rmnpGibbs, args)
+            print(str(out))
+            out
+            }
           else {
             if (input$M11 == 'm115') {
               do.call(rmnlIndepMetrop, args)}

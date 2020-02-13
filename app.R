@@ -45,8 +45,10 @@ image<- img(src="logo.png", height = 200, width = "90%") #Local variable
 ## Load General conditions, packages and other stuff necesary for run the app UI
 source(file.path("genUI.R"),  local = TRUE)$value
 
-
-ui <- navbarPage(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/"),
+tab_head=a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/")
+#tab_head=strong("BEsmarter",style = "color:light blue")
+#tab_head="BEsmarter"
+ui <- navbarPage(tab_head,windowTitle = "BEsmarter",
 
   source(file.path("ui", "presentation.R"),  local = TRUE)$value,
   source(file.path("ui", "univariate.R"),  local = TRUE)$value,
