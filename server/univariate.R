@@ -413,7 +413,7 @@ sim=function(DF){
 
   output$hotPmeanLP=renderRHandsontable({
 
-    if(is.null(input$hotPmean) ){
+    if(is.null(input$hotPmeanLP) ){
       p=as.numeric(input$MultPLy)
       tit="mean"
       if(is.na(p)){
@@ -423,8 +423,23 @@ sim=function(DF){
       a1=as.numeric(input$MultPLXA)
       ap=as.numeric(input$MultPLXD)+1
       n=a1+ap*(p-1)
+      f=input$Formula1b
+      AS=paste('AS',1:a1,sep='_')
+      NAS=1:p
+      base=as.numeric(input$MultPLnn)
+      NAS=NAS[-base]## quitar el base
+      nas_names=paste('cte',NAS,sep='_')
+      if(ap>1){
+        for (extra in 2:ap){
+          nas_names=c(nas_names,paste('NAS',extra-1,NAS,sep='_'))
+        }
+      }
+
+      all_names=c(nas_names,AS)
+
       DF=data.frame(tit=rep(0,n))
       colnames(DF)=tit
+      rownames(DF)=all_names
 
     }else{
       p=as.numeric(input$MultPLy)
@@ -436,11 +451,23 @@ sim=function(DF){
       a1=as.numeric(input$MultPLXA)
       ap=as.numeric(input$MultPLXD)+1
       n=a1+ap*(p-1)
-      DF=hot_to_r(input$hotPmean)
-      if(nrow(DF)!=n){
-        DF=data.frame(tit=rep(0,n))
+      f=input$Formula1b
+      AS=paste('AS',1:a1,sep='_')
+      NAS=1:p
+      base=as.numeric(input$MultPLnn)
+      NAS=NAS[-base]## quitar el base
+      nas_names=paste('cte',NAS,sep='_')
+      if(ap>1){
+        for (extra in 2:ap){
+          nas_names=c(nas_names,paste('NAS',extra-1,NAS,sep='_'))
+        }
       }
+
+      all_names=c(nas_names,AS)
+
+      DF=data.frame(tit=rep(0,n))
       colnames(DF)=tit
+      rownames(DF)=all_names
     }
 
 
@@ -747,12 +774,58 @@ sim=function(DF){
         else {
           if (input$M11 == 'm114') {
             out=do.call(rmnpGibbs, args)
-            print(str(out))
+            out$betadraw=as.matrix(out$betadraw)
+            colnames(out$betadraw)=rownames(hot_to_r(input$hotPmeanLP))
+
+            out$sigmadraw=as.matrix(out$sigmadraw)
+
+            nums=NULL
+
+            np=as.numeric(input$MultPLy)
+            base=as.numeric(input$MultPLnn)
+            for (i in 1:np){
+              for (j in 1:np){
+                if(j!=base&i!=base){
+                  nums=c(nums,paste(i,j,sep = '_'))
+                }
+
+              }
+            }
+
+            colnames(out$sigmadraw)=paste0('sigma',nums)
+
+            out$betadraw=as.mcmc(out$betadraw)
+            out$sigmadraw=as.mcmc(out$sigmadraw)
+
             out
             }
           else {
             if (input$M11 == 'm115') {
-              do.call(rmnlIndepMetrop, args)}
+              out=do.call(rmnlIndepMetrop, args)
+              out$betadraw=as.matrix(out$betadraw)
+              colnames(out$betadraw)=rownames(hot_to_r(input$hotPmeanLP))
+
+              out$sigmadraw=as.matrix(out$sigmadraw)
+
+              nums=NULL
+
+              np=as.numeric(input$MultPLy)
+              base=as.numeric(input$MultPLnn)
+              for (i in 1:np){
+                for (j in 1:np){
+                  if(j!=base&i!=base){
+                    nums=c(nums,paste(i,j,sep = '_'))
+                  }
+
+                }
+              }
+
+              colnames(out$sigmadraw)=paste0('sigma',nums)
+
+              out$betadraw=as.mcmc(out$betadraw)
+              out$sigmadraw=as.mcmc(out$sigmadraw)
+              out
+              }
             else {
               if (input$M11 == 'm116') {
                 out=do.call(rordprobitGibbs, args)
