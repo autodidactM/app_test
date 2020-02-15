@@ -1,7 +1,7 @@
 # BEsmarterGUI
 
 
-## What is in this project?
+## What is  this project?
 This app is developed to make easier applications of Bayesian regression analysis. It is designed thinking about applied researchers and practitioners without programming skills. There are lots a packages that made easy to do a Bayesian regression analysis in R. However, users require programming skills. We want to overcome this requirement such that applied researchers and practitioners applied Bayesian techniques in a very easy graphical environment. In addition, we have in the "Help tab" in our app a paper called “A GUIded tour of Bayesian regression” where all technical concepts are presented such that users can know all underlying theory. This paper also includes a brief user guide.
 
 
