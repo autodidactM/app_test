@@ -805,8 +805,6 @@ sim=function(DF){
               out$betadraw=as.matrix(out$betadraw)
               colnames(out$betadraw)=rownames(hot_to_r(input$hotPmeanLP))
 
-              out$sigmadraw=as.matrix(out$sigmadraw)
-
               nums=NULL
 
               np=as.numeric(input$MultPLy)
@@ -820,10 +818,10 @@ sim=function(DF){
                 }
               }
 
-              colnames(out$sigmadraw)=paste0('sigma',nums)
+
 
               out$betadraw=as.mcmc(out$betadraw)
-              out$sigmadraw=as.mcmc(out$sigmadraw)
+
               out
               }
             else {
