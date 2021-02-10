@@ -18,7 +18,9 @@
     )
   })
 
-  formula_df4 <- aux_formula_server('get_formula4',model=get_model,data=dataInput42)
+  get_model4 <- reactive({'M42'})
+
+  formula_df4 <- aux_formula_server('get_formula4',model=get_model4,data=dataInput42)
 
   observeEvent(input$Ana4, {
 

@@ -74,7 +74,7 @@ aux_formula_ui <- function(id,data=NULL) {
 
 
 
-aux_formula_server <- function(id,model='normal',data) {
+aux_formula_server <- function(id,model,data) {
 
   stopifnot(is.reactive(model))
   stopifnot(is.reactive(data))
