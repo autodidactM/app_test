@@ -8,5 +8,7 @@
                       ),
                       mainPanel(fluidRow(column(5,file4m),column(2,filech4m),column(2,rb4m)),
                                 helpText(base_help,'41SimBootstrapmodel.csv'),
-                                fluidRow(column(4,it1BB),column(4,BBr2)),fluidRow(column(3,FormulaM42)),go42,DUI42,HT,BE,DL42,DLP42,verbatimTextOutput("summary42"),pplot42)))
-           
+                                fluidRow(column(4,it1BB),column(4,BBr2)),
+                                #fluidRow(column(3,FormulaM42)),
+                                uiOutput('nonpar'),br(),go42,DUI42,HT,BE,DL42,DLP42,verbatimTextOutput("summary42"),pplot42)))
+

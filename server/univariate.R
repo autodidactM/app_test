@@ -79,20 +79,32 @@ sim=function(DF){
   })
 
 
+
+
+  get_model <- reactive({input$M11})
+
+  formula_df <- aux_formula_server('get_formula',model=get_model,data=dataInput1)
+
+
   ####### Output UI #####
   ##### 1.1 ########
   output$ui11 <- renderUI({
     if (input$M11=='m110'){
       return()}
     else{
-      switch(input$M11,
-             "m111" = isolate(wellPanel(fluidRow(column(3,FormulaM1A),column(9,HTForm)),
+      preview_and_aux <- aux_formula_ui('get_formula',data=dataInput1())
+
+      model_specific <- switch(input$M11,
+             "m111" = fluidPage(
+                                isolate(wellPanel(fluidRow(column(3,FormulaM1A),column(9,HTForm)),
                                         helpText("Introduce prior mean vector location parameters"),
                                         rHandsontableOutput("hotPmean"),
                                         helpText("Introduce prior covariances location parameters by row. It has to be symmetric"),
                                         rHandsontableOutput("hotPvar"),
                                         fluidRow(column(3,Psh),column(3,Psc)),
-                                        fluidRow(column(3,HTsh),column(3,HTsc)))),
+                                        fluidRow(column(3,HTsh),column(3,HTsc)))))
+
+             ,
              "m112" = isolate(wellPanel(fluidRow(column(3,FormulaM1A),column(9,HTForm)),
                                         helpText("Introduce prior mean vector location parameters"),
                                         rHandsontableOutput("hotPmean"),
@@ -166,7 +178,43 @@ sim=function(DF){
                                        rHandsontableOutput("hotPvar")
                                        ))
       )
+
+      return(fluidPage(preview_and_aux,
+                       actionButton("Ana1", "Build formula"),br(),
+                      model_specific))
     }
+  })
+
+  observeEvent(input$Ana1, {
+
+    if (!is.null(dataInput1())){
+      df <- formula_df()
+      new_formula <-  build_formula(df,input$M11)
+
+      if(input$M11 %in% c('m114','m115')){
+
+        xs1 <- rownames(df)[df$Type=='Alt Specific']
+
+        xs2 <- rownames(df)[df$Type=='Not Alt Specific']
+
+
+
+        p <- as.numeric(input$MultPLy)
+
+        if (length(xs1)%%p!=0){
+          new_formula <- 'Number of alternative specific regressors must be a multiple of the number of choice categorical alternatives'
+        }
+
+        updateTextInput(session, "MultPLXA", value=length(xs1)/p)
+        updateTextInput(session, "MultPLXD", value=length(xs2))
+        updateTextInput(session, "Formula1b", value=new_formula)
+      }else{
+        updateTextInput(session, "Formula1a", value=new_formula)
+      }
+    }else{
+      showNotification('Please upload data first')
+    }
+
   })
 
   output$hotPmean=renderRHandsontable({
@@ -467,6 +515,8 @@ sim=function(DF){
 
       DF=data.frame(tit=rep(0,n))
       colnames(DF)=tit
+      #print(DF)
+      #print(all_names)
       rownames(DF)=all_names
     }
 
