@@ -1,5 +1,8 @@
 # BEsmarterGUI
 
+## Summary Video
+
+https://youtu.be/oF43oKd-A4Q
 
 ## What is  this project?
 This app is developed to make easier applications of Bayesian regression analysis. It is designed thinking about applied researchers and practitioners without programming skills. There are lots a packages that made easy to do a Bayesian regression analysis in R. However, users require programming skills. We want to overcome this requirement such that applied researchers and practitioners applied Bayesian techniques in a very easy graphical environment. In addition, we have in the "Help tab" in our app a paper called “A GUIded tour of Bayesian regression” where all technical concepts are presented such that users can know all underlying theory. This paper also includes a brief user guide.
@@ -9,3 +12,5 @@ We encourage anyone who wants to use our app to do it. There is the folder named
 
 ## Usage
 Run the following command in R or any R script editor: shiny::runGitHub('besmarter/BSTApp', launch.browser = TRUE), and follow the steps that we describe in our paper “A GUIded tour of Bayesian regression” which is located in the "Help" tab in our GUI (top panel, left tab).
+
+
