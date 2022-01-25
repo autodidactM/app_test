@@ -16,10 +16,10 @@ Run the following command in R or any R script editor: shiny::runGitHub('besmart
 ## Usage from a docker image (Recomended)
 
 ```bash
-docker pull magralo95/BEsmarterGUI:latest
-docker run --rm -p 3838:3838 BEsmarterGUI
+docker pull magralo95/besmartergui:latest
+docker run --rm -p 3838:3838 magralo95/besmartergui
 ```
 
-Then you can access the app going to 127.0.0.1/3838 or http://localhost:3838/
+Then you can access the app going to 127.0.0.1:3838 or http://localhost:3838/
 
 
