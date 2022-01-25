@@ -1,3 +1,4 @@
+# Following https://juanitorduz.github.io/dockerize-a-shinyapp/
 # get shiny serves plus tidyverse packages image
 FROM  rocker/shiny-verse:latest
 # system libraries of general use
