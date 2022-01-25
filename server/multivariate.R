@@ -907,16 +907,17 @@ ListSUR<-function(dat,m,ki){
               var_names=rep(var_names,length(beta_nums)/length(var_names))
               colnames(out$betadraw)=paste(beta_nums,var_names,sep = '_')
               ####sigma
-              out$Sigmadraw=as.matrix(out$Sigmadraw)
+
+              out$sigmadraw=as.matrix(out$sigmadraw)
               sigmas=c()
-              n_y=sqrt(ncol(out$Sigmadraw))
+              n_y=sqrt(ncol(out$sigmadraw))
               for (i in 1:n_y){
                 for (j in 1:n_y){
                   sigmas=c(sigmas,paste0('sigma',i,'_',j))
                 }
               }
-              colnames(out$Sigmadraw)=sigmas
-              out$Sigmadraw=as.mcmc(out$Sigmadraw)
+              colnames(out$sigmadraw)=sigmas
+              out$sigmadraw=as.mcmc(out$sigmadraw)
               out$betadraw=as.mcmc(out$betadraw)
               out
             }
