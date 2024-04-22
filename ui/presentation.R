@@ -1,15 +1,15 @@
 tabPanel("Presentation",
          sidebarLayout(
            sidebarPanel(
-		        h1(a(em(strong("Bayesian Econometrics",style = "color:light blue")))),
+						h1(a(em(strong("Bayesian Econometrics",style = "color:light blue")))),
                         h2("Bayesian Econometrics: simulations, models and applications to research, teaching and encoding with responsibility"),
                         #image,
                         #h4("Professor Andres Ramirez Hassan"),
                         #h4("Mateo Graciano Londono"),
                         #h4(span("besmarter.team@gmail.com" , style = "color:blue"))
 						),
-           mainPanel(h3(a(em(strong("Bayesian Econometrics",style = "color:light blue"))))," is a team of friends from (Medellin, Colombia) that promoves research, teaching and encoding of Bayesian Econometrics with social responsibility."
-           ),
+           mainPanel(
+		   h3(em(strong("Bayesian Econometrics",style = "color:light blue")) is a team of friends from (Medellin, Colombia) that promoves research, teaching and encoding of Bayesian Econometrics with social responsibility."),
            h3("Bayesian Econometrics allows establishing a framework that simultaneously unifies decision theory, statistical inference, and probability theory under a single philosophically and mathematically consistent structure."),
            br(),
            h3(strong("VISION")),
@@ -21,6 +21,6 @@ tabPanel("Presentation",
            br(),
            h3(strong("MISSION")),
            h4(a(em(strong("Bayesian Econometrics",style = "color:light blue"))), "leads and excels in the generation and dissemination of Bayesian Econometric knowledge through research, teaching and software.")
-           ),
+           )),
   uiOutput("presentation")
 )
