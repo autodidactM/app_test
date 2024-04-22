@@ -1,4 +1,3 @@
-
 tabPanel("Presentation",
          sidebarLayout(
            sidebarPanel(h1(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/")),
