@@ -19,6 +19,6 @@ tabPanel("Presentation",
            h4(em("transform"), " clasic econometric research, teaching and applications."),
            h4("and where one of the main concerns of science is to solve social problems."),
            #br(),
-           )),
+           ))),
   uiOutput("presentation")
 )
