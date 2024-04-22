@@ -7,7 +7,7 @@ tabPanel("Hierarchical Longitudinal Models",
              ),
              h1(a(em(strong("Bayesian Econometrics",style = "color:light blue")),href = "http://www.besmarter-team.org/")),
              h2("Bayesian Econometrics: simulations, models and applications to research, teaching and encoding with responsibility"),
-             image
+             #image
            ),
            mainPanel(fluidRow(column(5,file3m),column(2,filech3m),column(2,rb3m)),
                      uiOutput("hierarchical_help_data"),
