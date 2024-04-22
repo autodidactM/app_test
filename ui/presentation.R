@@ -9,7 +9,7 @@ tabPanel("Presentation",
                         #h4(span("besmarter.team@gmail.com" , style = "color:blue"))
 						),
            mainPanel(
-		   h3(em(strong("Bayesian Econometrics",style = "color:light blue"))," is a team of friends from (Medellin, Colombia) that promoves research, teaching and encoding of Bayesian Econometrics with social responsibility."),
+		   h3(a(em(strong("Bayesian Econometrics",style = "color:light blue")))," is a team of friends from (Medellin, Colombia) that promoves research, teaching and encoding of Bayesian Econometrics with social responsibility."),
            h3("Bayesian Econometrics allows establishing a framework that simultaneously unifies decision theory, statistical inference, and probability theory under a single philosophically and mathematically consistent structure."),
            br(),
            h3(strong("VISION")),
