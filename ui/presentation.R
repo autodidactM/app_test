@@ -1,7 +1,7 @@
 tabPanel("Presentation",
          sidebarLayout(
            sidebarPanel(
-						h1(a(em(strong("Bayesian Econometrics",style = "color:light blue")))),
+		        h1(a(em(strong("Bayesian Econometrics",style = "color:light blue")))),
                         h2("Bayesian Econometrics: simulations, models and applications to research, teaching and encoding with responsibility"),
                         #image,
                         #h4("Professor Andres Ramirez Hassan"),
