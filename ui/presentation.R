@@ -20,7 +20,6 @@ tabPanel("Presentation",
            h4("and where one of the main concerns of science is to solve social problems."),
            br(),
            h3(strong("MISSION")),
-           #h4(a(em(strong("Bayesian Econometrics",style = "color:light blue")),href = "http://www.besmarter-team.org/"), "leads and excels in the generation and dissemination of Bayesian Econometric knowledge through research, teaching and software.")
            h4(a(em(strong("Bayesian Econometrics",style = "color:light blue")), "leads and excels in the generation and dissemination of Bayesian Econometric knowledge through research, teaching and software.")
 	   )),
   uiOutput("presentation")
