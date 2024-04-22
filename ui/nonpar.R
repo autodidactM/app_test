@@ -4,7 +4,7 @@
                       sidebarPanel(
                         h1(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/")),
                         h2("Bayesian Econometrics: simulations, models and applications to research, teaching and encoding with responsibility"),
-                        image
+                        #image
                       ),
                       mainPanel(fluidRow(column(5,file4m),column(2,filech4m),column(2,rb4m)),
                                 helpText(base_help,'41SimBootstrapmodel.csv'),
