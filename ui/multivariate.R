@@ -6,7 +6,7 @@ tabPanel("Multivariate Models",
              ),
              h1(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/")),
              h2("Bayesian Econometrics: simulations, models and applications to research, teaching and encoding with responsibility"),
-             image 
+             #image 
            ),
            mainPanel(fluidRow(column(5,file2m),column(2,filech2m),column(2,rb2m)),
                      uiOutput("multivariate_help_data"),
