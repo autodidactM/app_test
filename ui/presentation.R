@@ -13,14 +13,14 @@ tabPanel("Presentation",
            h3("Bayesian Econometrics allows establishing a framework that simultaneously unifies decision theory, statistical inference, and probability theory under a single philosophically and mathematically consistent structure."),
            br(),
            h3(strong("VISION")),
-           h4(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/"), "envisions a worldwide econometric research, teaching and applications based on a Bayesian framework that:"),
+           h4(a(em(strong("Bayesian Econometrics",style = "color:light blue")),href = "http://www.besmarter-team.org/"), "envisions a worldwide econometric research, teaching and applications based on a Bayesian framework that:"),
            h4(em("inspire"), " new econometric ideas."),
            h4(em("create"), " a user friendly environment for applications of Bayesian econometrics."),
            h4(em("transform"), " clasic econometric research, teaching and applications."),
            h4("and where one of the main concerns of science is to solve social problems."),
            br(),
            h3(strong("MISSION")),
-           h4(a(em(strong("BEsmarter",style = "color:light blue")),href = "http://www.besmarter-team.org/"), "leads and excels in the generation and dissemination of Bayesian Econometric knowledge through research, teaching and software.")
+           #h4(a(em(strong("Bayesian Econometrics",style = "color:light blue")),href = "http://www.besmarter-team.org/"), "leads and excels in the generation and dissemination of Bayesian Econometric knowledge through research, teaching and software.")
            )),
   uiOutput("presentation")
 )
